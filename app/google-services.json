@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "951818448360",
+    "firebase_url": "https://wagholikar-news.firebaseio.com",
+    "project_id": "wagholikar-news",
+    "storage_bucket": "wagholikar-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951818448360:android:d100e7cbb31ac723",
+        "android_client_info": {
+          "package_name": "com.example.aditya.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "951818448360-k8bcbk3ik8p4a7lu2p2m8fs4cbnkeccd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aditya.news",
+            "certificate_hash": "35faccd05f917e25cf7f1274498aa91e5d2ce267"
+          }
+        },
+        {
+          "client_id": "951818448360-ulriimfs5loiht3q06tnj0qn8c8ma4mc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnOuXnNmUbo6nx1529b5q0hn20BQbT0Jg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "951818448360-ulriimfs5loiht3q06tnj0qn8c8ma4mc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

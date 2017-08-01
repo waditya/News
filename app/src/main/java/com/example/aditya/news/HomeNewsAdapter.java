@@ -1,5 +1,6 @@
 package com.example.aditya.news;
 
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,20 +10,23 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.aditya.news.model.Article;
-import com.example.aditya.news.model.NewsArticle;
+//import com.example.aditya.news.model.NewsArticle;
 import com.example.aditya.news.utils.DateUtils;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.List;
+
+import static com.google.firebase.analytics.FirebaseAnalytics.getInstance;
 
 /**
  * Created by Adity on 7/29/2017.
  */
 
 public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNewsViewHolder> {
-    //private List<NewsArticle> newsArticles;
+
     private List<Article> newsArticles;
 
-    //public HomeNewsAdapter(List<NewsArticle> newsArticles) {
+
     public HomeNewsAdapter(List<Article> newsArticles) {
         this.newsArticles = newsArticles;
     }
@@ -36,24 +40,29 @@ public class HomeNewsAdapter extends RecyclerView.Adapter<HomeNewsAdapter.HomeNe
 
     @Override
     public void onBindViewHolder(HomeNewsViewHolder holder, final int position) {
-        //NewsArticle newsArticle = newsArticles.get(position);
+
         Article newsArticle = newsArticles.get(position);
-        //Glide.with(holder.cardImageView.getContext()).load(newsArticle.getImageUrl())
+
         Glide.with(holder.cardImageView.getContext()).load(newsArticle.getUrlToImage())
                 .centerCrop()
                 .into(holder.cardImageView);
         holder.cardTitleTextView.setText(newsArticle.getTitle());
-        //holder.cardTimeTextView.setText(newsArticle.getTime());
+
         holder.cardTimeTextView.setText(DateUtils.formatNewsApiDate(newsArticle.getPublishedAt()));
 
-        //holder.cardTimeTextView.setText(newsArticle.getDetails());
-        holder.cardContentTextView.setText(newsArticle.getDescription());
-        holder.itemView.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                NewsDetailsActivity.launch(v.getContext(), position);
 
-            }
+        holder.cardContentTextView.setText(newsArticle.getDescription());
+
+
+        holder.itemView.setOnClickListener((v) -> {
+
+            //log analytics
+
+            FirebaseAnalytics firebaseAnalytics = getInstance(v.getContext());
+            Bundle bundle = new Bundle();
+            bundle.putString("index", String.valueOf(position));
+            firebaseAnalytics.logEvent("cardClicked", bundle);
+            NewsDetailsActivity.launch(v.getContext(), position);
         });
     }
 

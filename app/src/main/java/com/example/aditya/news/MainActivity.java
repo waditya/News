@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GetArticlesResponse> call, Response<GetArticlesResponse> response) {
                 GetArticlesResponse getArticlesResponse = response.body();
+                NewsStore.setNewsArticles(getArticlesResponse.getArticles());
                 Toast.makeText(MainActivity.this, "Response Received", Toast.LENGTH_SHORT).show();
                 HomeNewsAdapter homeNewsAdapter = new HomeNewsAdapter(getArticlesResponse.getArticles());
                 newsRecyclerView.setAdapter(homeNewsAdapter);
