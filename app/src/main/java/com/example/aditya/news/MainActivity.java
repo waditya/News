@@ -23,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    //Variable declaration
+    //Variable declarations
     private RecyclerView newsRecyclerView;
     private CoordinatorLayout coordinatorLayout;
 
